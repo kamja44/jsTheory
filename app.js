@@ -1,33 +1,40 @@
 const emails = [
   "kamja@naver.com",
   "naver@google.com",
-  "kkamja@gmail.com",
-  "kkkamja@hanmail.net",
+  "sweetpotato@gmail.com",
+  "potato@hanmail.net",
 ];
 
-const foundMail = emails.find((item) => true);
+// Array.prototype.find() item == argumnet 즉, item이 email이여도 상관 X
+const foundMail = emails.find(item => item.includes("@gmail.com"));
+// const foundMail = email.find(
+//   function(item) {
+//     return item.includes("@gmail.com");
+//   });
 console.log(foundMail);
-const foundMail1 = emails.find((item) => item.includes("@gmail.com"));
-console.log(foundMail1);
 
-const noGmail = emails.filter((email) => !email.includes("@gmail"));
-console.log(noGmail);
+// Array.prototype.filter() item == argumnet 즉, item이 email이여도 상관 X
+const filterMail = emails.filter(item => !item.includes("@gmail"));
+console.log(filterMail);
 
-emails.forEach((email) => {
-  console.log(emails.split("@")[0]);
+// Array.prototype.forEach() item == argumnet 즉, item이 email이여도 상관 X
+const forMail = emails.forEach(item => {
+  console.log(item.split("@")[0]);
 });
 
-const cleaned = emails.map((email) => email.split("@")[0]);
+const cleaned = [];
+emails.forEach(email => {
+  cleaned.push(email.split("@")[0]);
+})
+console.log("forEach :",cleaned);
 
-const cleaned1 = emails.map((email, index) => ({
-  username: email.split("@")[0],
-  index,
-}));
 
-// default value
-function sayHi(Name = "missing") {
-  return "Hello" + Name;
-}
-console.log(sayHi());
+// Array.prototype.map() -> map은 forEach지만 반환된 element들로 새로운 array를 만든다. <- return array
+const mapMail = emails.map(email => email.split("@")[0]);
+console.log("map :",mapMail);
 
-const sayHiArrow = (Name = "missing") => "Hello" + Name;
+// Array.prototype.map() -> map은 forEach지만 반환된 element들로 새로운 array를 만든다. <- return object
+const mapObject = emails.map((email, index) => ({username : email.split("@")[0], index : index}));
+// arrow function의 {}을 ()로 감쌋다 <- object를 return 하겠다
+console.log(mapObject);
+console.table(cleaned);
