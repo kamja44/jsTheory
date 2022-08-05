@@ -38,3 +38,6 @@ const mapObject = emails.map((email, index) => ({username : email.split("@")[0],
 // arrow function의 {}을 ()로 감쌋다 <- object를 return 하겠다
 console.log(mapObject);
 console.table(cleaned);
+
+// implicit return(return을 안쓰고 return하는 즉, email => email.split("@")[0]와 같이)은 {}을 사용하면 사용하지 못하고
+// ()을 같이쓰면 object도 return이 가능하다.
