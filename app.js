@@ -1,9 +1,5 @@
-const DEFAULT = "lalala";
+const add = (a, b) => a + b;
+const name = `kong`;
 
-function sayHi(aName = "anon"){
-  return "Hello " + aName;
-}
-const Hi = (aName = DEFAULT) => "Hello "+aName;
-
-console.log("normal Function",sayHi());
-console.log("arrow Function", Hi());
+console.log(`a + b = ${add(1, 2)}`);
+console.log(`king${name}`);
