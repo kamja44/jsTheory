@@ -1,15 +1,25 @@
-const wrapper = document.querySelector(".wrapper");
+const styled = (aElement) => {
+  const el = document.createElement(aElement);
+  return (args) => {
+    const styles = args[0];
+    el.style = styles;
+    return el;
+  };
+};
 
-const friends = ["me", "lynn", "dal", "mark"];
-
-const list = `
-  <h1>People I love</h1>
-  <ul>
-    ${friends.map((friend) => `<li>${friend}</li>`).join("")}
-  </ul>
+// styled 함수를 호출하자마자 styled 함수를 한번 더 호출
+const title = styled("h1")`
+  background-color: red;
+  color: blue;
 `;
-// map은 무엇을 return 하던지 그 값을 array로 반환
 
-wrapper.innerHTML = list;
-console.log(friends.join("❤"));
-// friends.join -> 배열의 문자열들 합치기
+const subtitle = styled("span")`
+  color: green;
+`;
+
+title.innerText = `We just Cloned`;
+subtitle.innerText = `Styled Components`;
+
+document.body.append(title, subtitle);
+
+console.log(title);
