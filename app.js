@@ -1,25 +1,11 @@
-const styled = (aElement) => {
-  const el = document.createElement(aElement);
-  return (args) => {
-    const styles = args[0];
-    el.style = styles;
-    return el;
-  };
-};
+const isEmail = (email) => email.includes("@");
+console.log(isEmail("kamja@kamja.kamja"));
 
-// styled 함수를 호출하자마자 styled 함수를 한번 더 호출
-const title = styled("h1")`
-  background-color: red;
-  color: blue;
-`;
+const CC_NUMBER = "4444";
 
-const subtitle = styled("span")`
-  color: green;
-`;
+const displayName = `${"*".repeat(10)}${CC_NUMBER}`;
+console.log(displayName);
 
-title.innerText = `We just Cloned`;
-subtitle.innerText = `Styled Components`;
-
-document.body.append(title, subtitle);
-
-console.log(title);
+const name = "Mr.kamja";
+console.log(name.startsWith("Mr"));
+console.log(name.endsWith("Mr"));
