@@ -1,11 +1,29 @@
-// const days = ["Mon", "Tue", "Wed"];
+const settings = {
+  color: {
+    chosen_color: "dark",
+  },
+};
 
-// // array destructuring
-// const [mon, tue, wed, thu = "Thu"] = days;
-// console.log(mon, tue, wed, thu);
+// const {
+//   color: { chosen_color = "light" },
+// } = settings;
 
-// function destructuring
-const days = () => ["Mon", "Tue", "Wed"];
+// console.log(chosen_color);
 
-const [mon, tue, wed, thu = "Thu"] = days();
-console.log(mon, tue, wed, thu);
+// rename
+// const chosenColor = settings.color.chosen_color || "light";
+
+// rename wiht destructuring
+// const {
+//   color: { chosen_color: chosenColor = "light" },
+// } = settings;
+// console.log(chosenColor);
+
+let chosenColor = "blue";
+console.log(chosenColor);
+({
+  color: { chosen_color: chosenColor = "light" },
+} = settings);
+
+console.log(chosenColor);
+// 새 변수(chosenColor)를 생성하는 대신에 chosenColor를 업데이트하는 방식
