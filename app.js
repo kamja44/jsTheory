@@ -1,18 +1,11 @@
-const follow = checkFollow();
-const alert = checkAlert();
+// variable swapping
+// let mon = "Sat";
+// let sat = "Mon";
 
-// shorthand property
-// const settings = {
-//   notifications : {
-//     follow : follow,
-//     alert : alert
-//   }
-// }
-// line 4 to 10과 같은 결과
-// key값과 변수명이 같을 때 사용 가능
-const settigns = {
-  notifications: {
-    follow,
-    alert,
-  },
-};
+// [sat, mon] = [mon, sat];
+// console.log("mon", mon, "sat", sat);
+
+// array에서 특정 값 생략 Skipping
+const days = ["mon", "tue", "wed", "thu", "fri"];
+const [, , , thu, fri] = days;
+console.log(thu, fri);
