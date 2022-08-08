@@ -1,14 +1,17 @@
-// rest -> 모든 값을 하나의 변수로 축소(contract)시킨다. 
-// infiniteArgs 함수의 parameter들을 kimchi로 축소
-const infiniteArgs = (...kimchi) => console.log(kimchi);
-infiniteArgs("1",2,true,"lalala",[1,2,3,4]);
+const user = {
+  name : "kamja",
+  age : 20,
+  pwd : 44444,
+};
+// user object에서 pwd를 제외
+const killPassword = ({pwd, ...rest}) => rest;
+const cleanUser = killPassword(user);
+console.log(cleanUser);
+// {country = "Korea", ...rest} <-...rest === rest
+//  ({country, ...rest}); <-...rest === spread
+const setCountry = ({country = "Korea", ...rest}) => ({country, ...rest});
+console.log(setCountry(user));
 
-const bestFriendMaker = (first, ...rest) => {
-  console.log(`My best friend is ${first}`);
-  console.log(`${rest}`);
-  console.log(rest);
-}
-bestFriendMaker("kamja","potato","kokuma");
-
-// spread -> 확장(전개)
-// rest -> 축소 -> array로 반환
+// rename object
+const rename = ({name:Name, ...rest}) => ({Name, ...rest}) // name -> Name으로 변수명 변경
+console.log(rename(user));
