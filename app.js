@@ -1,31 +1,14 @@
-// object and array spread -> 이전 요소에 새로운 요소 더하기(병합)
-const friends = ["kamja","king"];
-const newFriends = [...friends, "dal"];
-console.log(newFriends);
+// rest -> 모든 값을 하나의 변수로 축소(contract)시킨다. 
+// infiniteArgs 함수의 parameter들을 kimchi로 축소
+const infiniteArgs = (...kimchi) => console.log(kimchi);
+infiniteArgs("1",2,true,"lalala",[1,2,3,4]);
 
-const kamja = {
-  username : "kamja",
+const bestFriendMaker = (first, ...rest) => {
+  console.log(`My best friend is ${first}`);
+  console.log(`${rest}`);
+  console.log(rest);
 }
-console.log({...kamja, potato : "like"});
+bestFriendMaker("kamja","potato","kokuma");
 
-const week = ["Mon","Tue","Wed"];
-const weekend = ["Sat","Sun"];
-console.log("fullweek",[...week,"Thu","Fri",...weekend]);
-
-// // Obejct에 속성(property)를 조건부로 추가하는 방법1
-// const lastName = prompt("Last name");
-// const user = {
-//   username : "kamja",
-//   age : 20,
-//   lastName : lastName !== "" ? lastName : undefined,
-// };
-// console.log(user);
-
-// Obejct에 속성(property)를 조건부로 추가하는 방법2
-const lastName = prompt("Last name");
-const user = {
-  username : "kamja",
-  age : 20,
-  ...(lastName !== "" && {lastName}),
-};
-console.log(user);
+// spread -> 확장(전개)
+// rest -> 축소 -> array로 반환
