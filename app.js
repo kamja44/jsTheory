@@ -1,9 +1,9 @@
-// finally
-const p1 = new Promise((resolve, reject) => {
-    // setTimeout(resolve, 3000, "First");
-    setTimeout(reject, 3000, "error");
-})
-  .then((value) => console.log(value))
-  .catch(error => console.log(error))
-  .finally(() => console.log("Im done"));
-  // finally <- then이 실행된 후 실행
+// fetch <- fetch는 Promise를 return한다. 뭔가를 가져온다.
+// yts.am <- json
+fetch("https://yts.mx/api/v2/list_movies.json")
+  .then(response => {
+    console.log(response);
+    return response.json();
+  })
+  .then(json => console.log(json))
+  .catch(error => console.log(error));
