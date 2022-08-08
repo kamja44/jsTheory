@@ -1,26 +1,31 @@
-const friends = [1,2,3,4];
-console.log(friends);
+// object and array spread -> 이전 요소에 새로운 요소 더하기(병합)
+const friends = ["kamja","king"];
+const newFriends = [...friends, "dal"];
+console.log(newFriends);
 
-// spread -> 변수를 가져와서 풀어해친다(unpack) 즉, 전개한다.
-// spread 사용법 -> ...배열명 or ...오브젝트명
-console.log(...friends); // -> friends배열의 1,2,3,4 값을 전개
-// 즉, 배열을 출력하는게 아닌 배열의 요소들을 출력
-
-const family = ["a","b","c"];
-// 배열을 합칠때 speread가 유용하다.
-// friends 배열과 family 배열 합치기
-console.log([...friends, ...family]); // friends와 family의 요소들을 가지고있는 배열 반환
-
-// object spread
-const sexy = {
-  name : "kamja",
-  age : 20,
-};
-
-const hello = {
-  sexy : false,
-  hello : "hello",
+const kamja = {
+  username : "kamja",
 }
+console.log({...kamja, potato : "like"});
 
-// sexy object와 hello object를 하나의 object로 반환
-console.log({...sexy, ...hello});
+const week = ["Mon","Tue","Wed"];
+const weekend = ["Sat","Sun"];
+console.log("fullweek",[...week,"Thu","Fri",...weekend]);
+
+// // Obejct에 속성(property)를 조건부로 추가하는 방법1
+// const lastName = prompt("Last name");
+// const user = {
+//   username : "kamja",
+//   age : 20,
+//   lastName : lastName !== "" ? lastName : undefined,
+// };
+// console.log(user);
+
+// Obejct에 속성(property)를 조건부로 추가하는 방법2
+const lastName = prompt("Last name");
+const user = {
+  username : "kamja",
+  age : 20,
+  ...(lastName !== "" && {lastName}),
+};
+console.log(user);
