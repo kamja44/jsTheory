@@ -1,21 +1,30 @@
-// generator -> 기본적으로 pause 할 수 있는 함수
-function* listPeople(){
-  /// yield <- generator에서 yield는 return과 같은 역할을 한다.
-  yield "kamja";
-  yield "kokumi";
-  yield "potato";
+// Proxy
+const userObj = {
+  username : "kamja",
+  age : 20,
+  password : 1234,
 }
-const listG = listPeople();
-console.log("First",listG.next()); // 첫 번째 yield인 kamja를 value로 반환, done : false <- 반환할 yield가 남아있다.
-console.log("second",listG.next()); // 두 번째 yield인 kokumi를 value로 반환, done : false <- 반환할 yield가 남아있다.
-console.log("Third",listG.next()) // 세 번째 yield인 potato를 value로 반환, done : false <- 반환할 yield가 남아있다.
-console.log("Fourth", listG.next()); // 네 번째 yield인 undefined를 value로 반환, done : true <- 반환할 yield가 없다.
-
-const friends = ["kamja","potato","tomato"];
-function* friendTeller(){
-  for(const friend of friends){
-    yield friend;
+const userFilter = {
+  get : (target, prop, receve) => {
+    // console.log("target",target); // target <- real Object
+    // console.log("prop",prop); // prop <- 내가 요청한 property
+    // console.log("receve",receve); // return proxy
+    // return target[prop];
+    return prop === "password" ? `${"*".repeat(5)}` : target[prop];
+  },
+  set : () => {
+    console.log("Somebody wrote Something");
+  },
+  deleteProperty : (target, prop) => {
+    if(prop === "password"){
+      return "FALSE";
+    }else{
+      target[prop] = "DELETE"
+    }
   }
-}
-const friendLooper = friendTeller();
-console.log(friendLooper.next());
+};
+
+// userObj의 event를 가로챈 후 userObj의 접근을 막는다.
+const filterUser = new Proxy(userObj, userFilter);
+console.log(filterUser);
+console.log(filterUser.age);
