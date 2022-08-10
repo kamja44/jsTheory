@@ -1,26 +1,16 @@
-// Symbol("key") <- key를 Unique로 만든다.
-const hello = Symbol("description");
-const bye = Symbol("description");
+// set <- Unique <- value 중복 불가 즉, 중복된 value들은 삭제된다.(하나만 저장된다.)
 
-const superBig = {
-  [Symbol("kamja")] : {
-  // kamja : {
-    kind : "potato"
-  },
-  [Symbol("kamja")] : {
-    // kamja : {
-      kind : "potato"
-  },
-  hello : "bye",
-}
-// console.log(superBig["kamja"].kind);
-// superBig["kamja"].kind = "kokumi";
-// console.log(superBig["kamja"].kind);
-// Symbol로 key를 Unique로 만들면 값의 수정이 불가능하다.
-console.log(superBig);
-// Symbol로 key를 Unique로 만들면 같은 값도 서로 다르다.
-console.log(Object.keys(superBig));
-console.log(Object.getOwnPropertySymbols(superBig));
+const sexySet = new Set([1,2,3,4,5,6,7,7,7,7,8]);
+// value는 배열로 할당한다.
+console.log(sexySet);
 
-const symbol = Object.getOwnPropertySymbols(superBig);
-symbol.forEach(symbol => console.log(superBig[symbol]));
+
+// sexySet에 9라는 value가 있는지 확인
+console.log(sexySet.has(9));
+sexySet.delete(1);
+console.log(sexySet);
+sexySet.clear();
+console.log(sexySet);
+sexySet.add("Hi");
+console.log(sexySet);
+console.log(sexySet.size);
