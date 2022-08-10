@@ -1,9 +1,12 @@
-// weakSet <- object만 저장 가능
-const weakSet = new WeakSet();
-const sexy = {
-  im : true
-};
-weakSet.add(sexy);
-console.log(weakSet);
-weakSet.add({hello : true}); // weakSet 내부에서 생성된 코드
-// {hello : true} Object는 아무곳에서도 참조하지 않는다. -> garbage Collector의 정리 대상
+// set <- only Value
+// map <- key with Value
+const map = new Map();
+map.set("age", 20);
+console.log(map);
+// map.entries() <- get iterator
+console.log(map.entries());
+console.log(map.has("age"));
+console.log(map.get("age"));
+// overwrite 가능
+map.set("age","4444");
+console.log(map.get("age"));
