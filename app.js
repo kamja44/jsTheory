@@ -1,6 +1,11 @@
-// ?? operator -> 피연산자가 null이거나 undefined일때 작동하는 operator
-let name;
-console.log("Hello", name || "anon");
-
-let name2 =0;
-console.log("Hello", name ?? "kamja");
+const me = {
+    name : "kamja",
+    profile : {
+        email : "something@kamja.co"
+    }
+}
+console.log(me.profile.email);
+console.log(me.potato && me.potato.fried); // error가 아닌 undefined출력
+// optional chaning
+console.log(me?.potato?.email?.fried?.nameeee);
+// 즉, me안에 potato가 없으니 me가 출력
